@@ -20,8 +20,8 @@ describe('POST /users', () => {
   it('should not register an user with duplicated email', () => {
 
     const user = {
-      name: 'Cypress Test',
-      email: 'cypress@test.com',
+      name: 'Duplication Test',
+      email: 'duplication@test.com',
       password: 'qax123'
     };
 
@@ -35,6 +35,49 @@ describe('POST /users', () => {
         expect(response.status).to.eq(409);
         expect(message).to.eq('Duplicated email!');
       });
+  });
+
+  context('mandatory fields check', () => {
+    let user;
+
+    beforeEach(() => {
+      user = {
+        name: 'Mandatory Test',
+        email: 'mandatory@test.com',
+        password: 'qax123'
+      };
+    });
+
+    it('name is required', () => {
+      delete user.name;
+      cy.postUser(user)
+        .then(response => {
+          const { message } = response.body;
+          expect(response.status).to.eq(400);
+          expect(message).to.eq('ValidationError: \"name\" is required');
+        });
+    });
+    
+    it('email is required', () => {
+      delete user.email;
+      cy.postUser(user)
+        .then(response => {
+          const { message } = response.body;
+          expect(response.status).to.eq(400);
+          expect(message).to.eq('ValidationError: \"email\" is required');
+        });
+    });
+
+    it('password is required', () => {
+      delete user.password;
+      cy.postUser(user)
+        .then(response => {
+          const { message } = response.body;
+          expect(response.status).to.eq(400);
+          expect(message).to.eq('ValidationError: \"password\" is required');
+        });
+    });
+
   });
 });
 
