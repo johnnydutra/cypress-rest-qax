@@ -2,55 +2,40 @@
 
 describe('POST /users', () => {
   it('should register a new user', () => {
-
-    const user = {
-      name: 'Cypress Test',
-      email: 'cypress@test.com',
-      password: 'qax123'
-    };
-
-    cy.task('deleteUser', user.email);
-    
-    cy.postUser(user)
-      .then(response => {
+    cy.fixture('users').then(data => {
+      cy.task('deleteUser', data.new.email);
+      cy.postUser(data.new).then(response => {
         expect(response.status).to.eq(200);
+        expect(response.body.name).to.eq(data.new.name);
       });
+    });
   });
 
   it('should not register an user with duplicated email', () => {
-
-    const user = {
-      name: 'Duplication Test',
-      email: 'duplication@test.com',
-      password: 'qax123'
-    };
-
-    cy.task('deleteUser', user.email);
-
-    cy.postUser(user);
-    
-    cy.postUser(user)
-      .then(response => {
+    cy.fixture('users').then(data => {
+      cy.task('deleteUser', data.duplicated.email);
+      cy.postUser(data.duplicated);
+      cy.postUser(data.duplicated).then(response => {
         const { message } = response.body;
         expect(response.status).to.eq(409);
         expect(message).to.eq('Duplicated email!');
       });
+    });
   });
 
   context('mandatory fields check', () => {
-    let user;
+    let mandatory;
 
     beforeEach(() => {
-      user = {
-        name: 'Mandatory Test',
-        email: 'mandatory@test.com',
-        password: 'qax123'
-      };
+      cy.fixture('users').then(function (users) {
+        this.users = users;
+        mandatory = this.users.mandatory;
+      });
     });
 
     it('name is required', () => {
-      delete user.name;
-      cy.postUser(user)
+      delete mandatory.name;
+      cy.postUser(mandatory)
         .then(response => {
           const { message } = response.body;
           expect(response.status).to.eq(400);
@@ -59,8 +44,8 @@ describe('POST /users', () => {
     });
     
     it('email is required', () => {
-      delete user.email;
-      cy.postUser(user)
+      delete mandatory.email;
+      cy.postUser(mandatory)
         .then(response => {
           const { message } = response.body;
           expect(response.status).to.eq(400);
@@ -69,8 +54,8 @@ describe('POST /users', () => {
     });
 
     it('password is required', () => {
-      delete user.password;
-      cy.postUser(user)
+      delete mandatory.password;
+      cy.postUser(mandatory)
         .then(response => {
           const { message } = response.body;
           expect(response.status).to.eq(400);

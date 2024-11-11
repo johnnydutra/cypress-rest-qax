@@ -1,0 +1,32 @@
+{
+  "duplicated": {
+    "name": "Ross Geller",
+    "email": "ross@centralperk.com",
+    "password": "fine"
+  },
+  "incorrect": {
+    "name": "Joey Tribbiani",
+    "email": "joey@centralperk.com",
+    "password": "howyoudoin"
+  },
+  "mandatory": {
+    "name": "Monica Geller",
+    "email": "monica@centralperk.com",
+    "password": "mrbig"
+  },
+  "new": {
+    "name": "Phoebe Buffay",
+    "email": "phoebe@centralperk.com",
+    "password": "coo"
+  },
+  "unregistered": {
+    "name": "Chandler Bing",
+    "email": "chandler@centralperk.com",
+    "password": "default"
+  },
+  "valid": {
+    "name": "Rachel Green",
+    "email": "rachel@centralperk.com",
+    "password": "transpondster"
+  }
+}
