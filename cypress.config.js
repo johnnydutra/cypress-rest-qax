@@ -10,8 +10,15 @@ module.exports = defineConfig({
       on('task', {
         async deleteUser(email) {
           const users = db.collection('users');
-          await users.deleteMany({email: email});
-          return null
+          await users.deleteMany({ email: email });
+          return null;
+        },
+        async deleteTask(userEmail, taskName) {
+          const users = db.collection('users');
+          const user = users.findOne({ email: userEmail });
+          const tasks = db.collection('tasks');
+          await tasks.deleteMany({ task: taskName, user: user._id });
+          return null;
         }
       })
     },

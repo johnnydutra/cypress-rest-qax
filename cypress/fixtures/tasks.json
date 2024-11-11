@@ -1,0 +1,17 @@
+{
+  "create": {
+    "user": {
+      "name": "Papito Fernando",
+      "email": "papito@hotmail.com",
+      "password": "pwd123"
+    },
+    "task": {
+      "name": "Pagar fatura do cartão",
+      "tags": [
+        "nubank",
+        "smiles",
+        "ourocard"
+      ]
+    }
+  }
+}
