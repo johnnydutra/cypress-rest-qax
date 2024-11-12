@@ -13,5 +13,15 @@
         "ourocard"
       ]
     }
+  },
+  "duplicated": {
+    "user": {
+      "name": "Jean Grey",
+      "email": "phoenix@xmen.com",
+      "password": "pwd123"
+    },
+    "task": {
+      "name": "Pagar fatura do cartão"
+    }
   }
 }
