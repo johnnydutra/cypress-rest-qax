@@ -1,14 +1,15 @@
 const { defineConfig } = require("cypress");
-
 const { connect } = require('./cypress/support/mongo');
+
+require('dotenv').config();
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: 'http://localhost:3333',
+    baseUrl: process.env.BASE_URL,
     env: {
-      amqpHost: 'https://jackal.rmq.cloudamqp.com/api/queues/uoauoiue',
-      amqpQueue: 'tasks',
-      amqpToken: 'Basic dW9hdW9pdWU6TzdMTThmNW5tckh6a2FLeFI4ejRjSW40akgwUk1iVVU='
+      amqpHost: process.env.AMQP_HOST,
+      amqpQueue: process.env.AMQP_QUEUE,
+      amqpToken: process.env.AMQP_TOKEN
     },
     async setupNodeEvents(on, config) {
       const db = await connect();

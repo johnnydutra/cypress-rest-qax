@@ -1,6 +1,7 @@
 const { MongoClient } = require('mongodb');
+require('dotenv').config();
 
-const mongoUri = 'mongodb+srv://cypress:abcdef123456@cluster0.dbreo.mongodb.net/markdb?retryWrites=true&w=majority&appName=Cluster0';
+const mongoUri = process.env.MONGO_URI;
 
 const client = new MongoClient(mongoUri);
 
