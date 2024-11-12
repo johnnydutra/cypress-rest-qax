@@ -41,9 +41,9 @@ describe('POST /tasks', () => {
       cy.getMessageQueue()
         .then(response => {
           expect(response.status).to.eq(200);
-          expect(response.body[1].payload).to.include(user.name.split(' ')[0]);
-          expect(response.body[1].payload).to.include(task.name);
-          expect(response.body[1].payload).to.include(user.email);
+          expect(response.body[0].payload).to.include(user.name.split(' ')[0]);
+          expect(response.body[0].payload).to.include(task.name);
+          expect(response.body[0].payload).to.include(user.email);
         });
     });
   });
