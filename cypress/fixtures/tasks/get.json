@@ -1,0 +1,32 @@
+{
+  "list": {
+    "user": {
+      "name": "Charles Xavier",
+      "email": "xavier@xman.com",
+      "password": "pwd123"
+    },
+    "tasks": [
+      {
+        "name": "S7udy TypeScript",
+        "tags": [
+          "nodejs",
+          "programming"
+        ]
+      },
+      {
+        "name": "S7udy Mandarim",
+        "tags": [
+          "language"
+        ]
+      },
+      {
+        "name": "S7udy Italian Cooking",
+        "tags": [
+          "veggies",
+          "pasta",
+          "eggs"
+        ]
+      }
+    ]
+  }
+}
