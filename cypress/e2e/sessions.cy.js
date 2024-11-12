@@ -8,7 +8,7 @@ describe('POST /sessions', () => {
   it('should authenticate user', function () {
     const data = this.userData.valid;
 
-    cy.task('deleteUser', data.email);
+    cy.task('removeUser', data.email);
     cy.postUser(data);
 
     cy.postSession({ email: data.email, password: data.password })
@@ -26,7 +26,7 @@ describe('POST /sessions', () => {
   it('should not authenticate with wrong password', function () {
     const data = this.userData.incorrect;
 
-    cy.task('deleteUser', data.email);
+    cy.task('removeUser', data.email);
     cy.postUser(data);
 
     cy.postSession({ email: data.email, password: 'aaaa' })
@@ -38,7 +38,7 @@ describe('POST /sessions', () => {
   it('should not authenticate with unregistered email', function () {
     const data = this.userData.unregistered;
 
-    cy.task('deleteUser', data.email);
+    cy.task('removeUser', data.email);
 
     cy.postSession({ email: data.email, password: data.password })
       .then(response => {
@@ -49,7 +49,7 @@ describe('POST /sessions', () => {
   it('should not authenticate when passing extra arguments', function () {
     const data = this.userData.valid;
 
-    cy.task('deleteUser', data.email);
+    cy.task('removeUser', data.email);
     cy.postUser(data);
 
     cy.postSession(data)

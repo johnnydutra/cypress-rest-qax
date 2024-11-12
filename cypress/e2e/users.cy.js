@@ -3,7 +3,7 @@
 describe('POST /users', () => {
   it('should register a new user', () => {
     cy.fixture('users').then(data => {
-      cy.task('deleteUser', data.new.email);
+      cy.task('removeUser', data.new.email);
       cy.postUser(data.new).then(response => {
         expect(response.status).to.eq(200);
         expect(response.body.name).to.eq(data.new.name);
@@ -13,7 +13,7 @@ describe('POST /users', () => {
 
   it('should not register an user with duplicated email', () => {
     cy.fixture('users').then(data => {
-      cy.task('deleteUser', data.duplicated.email);
+      cy.task('removeUser', data.duplicated.email);
       cy.postUser(data.duplicated);
       cy.postUser(data.duplicated).then(response => {
         const { message } = response.body;

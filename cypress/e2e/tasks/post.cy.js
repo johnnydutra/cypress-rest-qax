@@ -8,12 +8,12 @@ describe('POST /tasks', () => {
   it('should register a new task', function () {
     const { user, task } = this.tasks.create;
 
-    cy.task('deleteUser', user.email);
+    cy.task('removeUser', user.email);
     cy.postUser(user);
 
     cy.postSession(user)
       .then(sessionResp => {
-        cy.task('deleteTask', task.name, user.email);
+        cy.task('removeTask', task.name, user.email);
         cy.postTask(sessionResp.body.token, task)
           .then(response => {
             expect(response.status).to.eq(200);
@@ -29,12 +29,12 @@ describe('POST /tasks', () => {
   it('should not register a duplicated task', function () {
     const { user, task } = this.tasks.duplicated;
 
-    cy.task('deleteUser', user.email);
+    cy.task('removeUser', user.email);
     cy.postUser(user);
 
     cy.postSession(user)
       .then(sessionResp => {
-        cy.task('deleteTask', task.name, user.email);
+        cy.task('removeTask', task.name, user.email);
         cy.postTask(sessionResp.body.token, task);
         cy.postTask(sessionResp.body.token, task)
           .then(taskResp => {

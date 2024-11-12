@@ -28,5 +28,35 @@
         ]
       }
     ]
+  },
+  "unique": {
+    "user": {
+      "name": "Tony Stark",
+      "email": "tony@stark.com",
+      "password": "pwd123"
+    },
+    "task": {
+      "name": "Do one thing only",
+      "tags": [
+        "focus",
+        "singlethreading",
+        "pause"
+      ]
+    }
+  },
+  "not_found": {
+    "user": {
+      "name": "Bruce Banner",
+      "email": "bruce@banner.com",
+      "password": "pwd123"
+    },
+    "task": {
+      "name": "Test a 404 scenario",
+      "tags": [
+        "api",
+        "cypress",
+        "automation"
+      ]
+    }
   }
 }
