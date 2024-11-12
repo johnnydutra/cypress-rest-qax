@@ -5,7 +5,7 @@ describe('POST /users', () => {
     cy.fixture('users').then(data => {
       cy.task('removeUser', data.new.email);
       cy.postUser(data.new).then(response => {
-        expect(response.status).to.eq(200);
+        expect(response.status).to.eq(201);
         expect(response.body.name).to.eq(data.new.name);
       });
     });

@@ -1,0 +1,29 @@
+{
+  "update": {
+    "user": {
+      "name": "Eliud Kipchoge",
+      "email": "kipchoge@nn.com",
+      "password": "pwd123"
+    },
+    "task": {
+      "name": "Win 10K Race",
+      "tags": [
+        "short",
+        "season"
+      ]
+    }
+  },
+  "not_found": {
+    "user": {
+      "name": "Mo Farah",
+      "email": "mo@farah.com",
+      "password": "pwd123"
+    },
+    "task": {
+      "name": "Unretire",
+      "tags": [
+        "training"
+      ]
+    }
+  }
+}

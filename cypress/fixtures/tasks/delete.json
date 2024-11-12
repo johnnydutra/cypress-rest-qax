@@ -1,0 +1,31 @@
+{
+  "remove": {
+    "user": {
+      "name": "Peter Parker",
+      "email": "peter@parker.com",
+      "password": "pwd123"
+    },
+    "task": {
+      "name": "Develop pictures",
+      "tags": [
+        "photos",
+        "clicks",
+        "pics"
+      ]
+    }
+  },
+  "not_found": {
+    "user": {
+      "name": "Bruce Wayne",
+      "email": "bruce@wayne.com",
+      "password": "pwd123"
+    },
+    "task": {
+      "name": "Pickup Batmobile",
+      "tags": [
+        "chores",
+        "ride"
+      ]
+    }
+  }
+}
